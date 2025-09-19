@@ -261,9 +261,9 @@ def _get_TR(mass, coords):
 
 
 def _get_rotor_type(rot_const):
-    if numpy.all(rot_const > 1e8):
+    if numpy.all(numpy.abs(rot_const) > 1e8):
         rotor_type = 'ATOM'
-    elif rot_const[0] > 1e8 and (rot_const[1] - rot_const[2] < 1e-3):
+    elif numpy.abs(rot_const[0]) > 1e8 and (rot_const[1] - rot_const[2] < 1e-3):
         rotor_type = 'LINEAR'
     else:
         rotor_type = 'REGULAR'
